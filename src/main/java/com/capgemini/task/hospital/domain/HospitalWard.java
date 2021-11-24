@@ -4,7 +4,6 @@ import com.capgemini.task.hospital.Patients;
 import com.capgemini.task.hospital.domain.staff.MedicalDoctor;
 import com.capgemini.task.hospital.domain.staff.Nurse;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -31,17 +30,17 @@ public class HospitalWard {
         return capacity - patients.size() > 0;
     }
 
-    public void admitPatient(String symptoms, LocalDate localDate, String firstName, String lastName, LocalDate birthDate, DocumentId document, int height, int weight, Nationality nationality) {
+    public void admitPatient(PatientRegistrationInfo info) {
         HospitalRecord hospitalRecord = new HospitalRecord();
         hospitalRecord.setAdmissionDate(LocalDateTime.now());
-        hospitalRecord.setSymptoms(symptoms);
+        hospitalRecord.setSymptoms(info.getSymptoms());
 
-        if (Patients.isKnownPatient(firstName, lastName, birthDate, document, height, weight, nationality)) {
-            Patient patient = Patients.find(document);
+        if (Patients.isKnownPatient(info.getFirstName(), info.getLastName(), info.getBirthDate(), info.getDocument(), info.getHeight(), info.getWeight(), info.getNationality())) {
+            Patient patient = Patients.find(info.getDocument());
             patient.getHospitalRecords().add(hospitalRecord);
             patients.add(patient);
         } else {
-            Patient patient = Patients.createPatient(firstName, lastName, birthDate, document, height, weight, nationality);
+            Patient patient = Patients.createPatient(info.getFirstName(), info.getLastName(), info.getBirthDate(), info.getDocument(), info.getHeight(), info.getWeight(), info.getNationality());
             patient.getHospitalRecords().add(hospitalRecord);
             patients.add(patient);
         }

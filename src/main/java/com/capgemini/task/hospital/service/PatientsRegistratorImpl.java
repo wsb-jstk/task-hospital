@@ -1,11 +1,9 @@
 package com.capgemini.task.hospital.service;
 
 import com.capgemini.task.hospital.domain.Department;
-import com.capgemini.task.hospital.domain.DocumentId;
 import com.capgemini.task.hospital.domain.HospitalWard;
-import com.capgemini.task.hospital.domain.Nationality;
+import com.capgemini.task.hospital.domain.PatientRegistrationInfo;
 
-import java.time.LocalDate;
 import java.util.Map;
 
 public class PatientsRegistratorImpl implements PatientsRegistrator {
@@ -22,14 +20,13 @@ public class PatientsRegistratorImpl implements PatientsRegistrator {
      * @return true if patient was admitted; false otherwise
      */
     @Override
-    public boolean admitPatient(Department department, String symptoms, LocalDate localDate, String firstName, String lastName, //
-                                LocalDate birthDate, DocumentId document, int height, int weight, Nationality nationality) {
+    public boolean admitPatient(Department department, PatientRegistrationInfo info) {
         HospitalWard ward = wards.get(Department.INTENSIVE_CARE_UNIT);
         if (ward == null) {
             return false;
         }
         if (ward.hasFreePlace()) {
-            ward.admitPatient(symptoms, localDate, firstName, lastName, birthDate, document, height, weight, nationality);
+            ward.admitPatient(info);
             return true;
         }
         return false;

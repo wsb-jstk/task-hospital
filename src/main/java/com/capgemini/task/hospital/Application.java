@@ -1,9 +1,6 @@
 package com.capgemini.task.hospital;
 
-import com.capgemini.task.hospital.domain.Department;
-import com.capgemini.task.hospital.domain.DocumentId;
-import com.capgemini.task.hospital.domain.HospitalWard;
-import com.capgemini.task.hospital.domain.Nationality;
+import com.capgemini.task.hospital.domain.*;
 import com.capgemini.task.hospital.service.PatientsRegistrator;
 import com.capgemini.task.hospital.service.PatientsRegistratorImpl;
 import org.slf4j.Logger;
@@ -31,31 +28,35 @@ public final class Application {
         PatientsRegistrator hospitalService = new PatientsRegistratorImpl(wards);
 
         // pierwszy pacjent do oddziału, na którym jest miejsce
-        boolean result1 = hospitalService.admitPatient(Department.INTENSIVE_CARE_UNIT, "ból gardła",
-                LocalDate.of(2021, 1, 1), "Jan", "Kowalski",
+        PatientRegistrationInfo patientRegistrationInfo1 = new PatientRegistrationInfo("ból gardła",
+                "Jan", "Kowalski",
                 LocalDate.of(1990, 1, 1),
                 new DocumentId("driving license", "AAAA"), 180, 75, Nationality.POLISH);
+        boolean result1 = hospitalService.admitPatient(Department.INTENSIVE_CARE_UNIT, patientRegistrationInfo1);
         LOG.info("Jan Kowalski został przyjęty? {}", result1);
 
         // powracający pacjent
-        boolean result2 = hospitalService.admitPatient(Department.INTENSIVE_CARE_UNIT, "ból brzucha",
-                LocalDate.of(2021, 11, 10), "Jan", "Kowalski",
+        PatientRegistrationInfo patientRegistrationInfo2 = new PatientRegistrationInfo("ból brzucha",
+                "Jan", "Kowalski",
                 LocalDate.of(1990, 1, 1),
                 new DocumentId("driving license", "AAAA"), 180, 75, Nationality.POLISH);
+        boolean result2 = hospitalService.admitPatient(Department.INTENSIVE_CARE_UNIT, patientRegistrationInfo2);
         LOG.info("Jan Kowalski został przyjęty? {}", result2);
 
         // brak miejsc
-        boolean result3 = hospitalService.admitPatient(Department.ISOLATION_WARD, "zarażona wirusem",
-                LocalDate.of(2021, 11, 10), "Joanna", "Kowalska",
+        PatientRegistrationInfo patientRegistrationInfo3 = new PatientRegistrationInfo("zarażona wirusem",
+                "Joanna", "Kowalska",
                 LocalDate.of(1970, 1, 1),
                 new DocumentId("driving license", "BBBB"), 165, 75, Nationality.POLISH);
+        boolean result3 = hospitalService.admitPatient(Department.ISOLATION_WARD, patientRegistrationInfo3);
         LOG.info("Joanna Kowalska została przyjęta? {}", result3);
 
         // nieznany oddział - after refactor of ward's name (String -> enum) I'm not able to do it
-//        boolean result4 = hospitalService.admitPatient("Hogwart", "potrafi czarować",
-//                LocalDate.of(2021, 11, 10), "Monika", "Żuk",
+//        PatientRegistrationInfo patientRegistrationInfo4 = new PatientRegistrationInfo("potrafi czarować",
+//                "Monika", "Żuk",
 //                LocalDate.of(1980, 1, 1),
 //                new DocumentId("driving license", "CCCC"), 176, 70, Nationality.POLISH);
+//        boolean result4 = hospitalService.admitPatient("Hogwart", patientRegistrationInfo4);
 //        LOG.info("Monika Żuk została przyjęta? {}", result4);
     }
 
