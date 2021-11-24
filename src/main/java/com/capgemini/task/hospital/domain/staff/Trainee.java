@@ -5,7 +5,7 @@ import com.capgemini.task.hospital.domain.*;
 import java.time.LocalDate;
 import java.util.Set;
 
-public class Nurse implements Staff {
+public class Trainee implements Staff {
 
     private String firstName;
     private String lastName;
@@ -21,7 +21,7 @@ public class Nurse implements Staff {
 
     @Override
     public void heal(Patient patient) {
-        throw new IllegalStateException("I can't do that");
+        // heal
     }
 
     @Override
@@ -43,4 +43,6 @@ public class Nurse implements Staff {
     public void terminateContract(Staff staff) {
         throw new IllegalStateException("I can't do that");
     }
+
+
 }

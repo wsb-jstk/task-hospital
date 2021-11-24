@@ -21,12 +21,12 @@ public class MedicalDoctor implements Staff {
     }
 
     @Override
-    public void treat(Patient patient) {
-        // treat
+    public void heal(Patient patient) {
+        // heal
     }
 
     @Override
-    public void doInjection(Patient patient) {
+    public void doInjection(Patient patient, Medicament medicament) {
         throw new IllegalStateException("I can't do that");
     }
 

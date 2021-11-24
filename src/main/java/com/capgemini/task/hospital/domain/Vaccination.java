@@ -1,11 +1,10 @@
 package com.capgemini.task.hospital.domain;
 
-import java.time.LocalDate;
+class Vaccination extends Medicament {
 
-class Vaccination {
-
-    private LocalDate date;
-    private String remarks;
-    private SystemUser user;
+    /**
+     * How long given vaccination last. In months
+     */
+    private int durability;
 
 }

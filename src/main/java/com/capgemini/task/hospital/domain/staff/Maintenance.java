@@ -20,12 +20,12 @@ class Maintenance implements Staff {
     }
 
     @Override
-    public void treat(Patient patient) {
+    public void heal(Patient patient) {
         throw new IllegalStateException("I can't do that");
     }
 
     @Override
-    public void doInjection(Patient patient) {
+    public void doInjection(Patient patient, Medicament medicament) {
         throw new IllegalStateException("I can't do that");
     }
 
