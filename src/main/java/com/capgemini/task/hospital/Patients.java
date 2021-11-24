@@ -18,10 +18,8 @@ public class Patients {
 
     private static final Set<Patient> PATIENTS = new HashSet<>();
 
-    public static boolean isKnownPatient(String firstName, String lastName, LocalDate birthDate, DocumentId document, int height, int weight,
-                                         Nationality nationality) {
-        Patient patient = new Patient(firstName, lastName, birthDate, setOf(document), height, weight, nationality);
-        return PATIENTS.contains(patient);
+    public static boolean isKnownPatient(DocumentId document) {
+        return find(document) != null;
     }
 
     public static Patient createPatient(String firstName, String lastName, LocalDate birthDate, DocumentId document, int height, int weight,
