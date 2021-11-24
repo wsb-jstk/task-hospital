@@ -7,4 +7,5 @@ class Vaccination extends Medicament {
      */
     private int durability;
 
+
 }

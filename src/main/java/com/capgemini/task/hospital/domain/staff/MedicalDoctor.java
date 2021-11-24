@@ -1,11 +1,14 @@
 package com.capgemini.task.hospital.domain.staff;
 
-import com.capgemini.task.hospital.domain.*;
+import com.capgemini.task.hospital.domain.DocumentId;
+import com.capgemini.task.hospital.domain.Patient;
+import com.capgemini.task.hospital.domain.Qualification;
+import com.capgemini.task.hospital.domain.Sex;
 
 import java.time.LocalDate;
 import java.util.Set;
 
-public class MedicalDoctor implements Staff {
+public class MedicalDoctor implements Staff, Healer {
 
     private String firstName;
     private String lastName;
@@ -22,27 +25,7 @@ public class MedicalDoctor implements Staff {
 
     @Override
     public void heal(Patient patient) {
-        // heal
-    }
-
-    @Override
-    public void doInjection(Patient patient, Medicament medicament) {
-        throw new IllegalStateException("I can't do that");
-    }
-
-    @Override
-    public void clean(HospitalWard hospitalWard) {
-        throw new IllegalStateException("I can't do that");
-    }
-
-    @Override
-    public void hireStaff(Staff staff) {
-        throw new IllegalStateException("I can't do that");
-    }
-
-    @Override
-    public void terminateContract(Staff staff) {
-        throw new IllegalStateException("I can't do that");
+        // treat
     }
 
     // getters and setters
