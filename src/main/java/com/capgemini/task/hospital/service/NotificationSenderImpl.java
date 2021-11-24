@@ -2,11 +2,17 @@ package com.capgemini.task.hospital.service;
 
 import com.capgemini.task.hospital.domain.staff.MedicalDoctor;
 import com.capgemini.task.hospital.domain.staff.Staff;
-import com.external.vendor.sms.SmsGatewayImpl;
+import com.external.vendor.sms.SmsGateway;
 
 import java.time.YearMonth;
 
 public class NotificationSenderImpl implements NotificationSender {
+
+    private final SmsGateway smsGateway;
+
+    public NotificationSenderImpl(SmsGateway smsGateway) {
+        this.smsGateway = smsGateway;
+    }
 
     @Override
     public void sendEmailWithPayslip(Staff staff, YearMonth yearMonth) {
@@ -20,8 +26,7 @@ public class NotificationSenderImpl implements NotificationSender {
 
     @Override
     public void sendEmergencySms(MedicalDoctor medicalDoctor, String text) {
-        // sends SMS to given staff member with provided text
-        new SmsGatewayImpl().send(medicalDoctor.getPhoneNumber(), text);
+        smsGateway.send(medicalDoctor.getPhoneNumber(), text);
     }
 
 }
