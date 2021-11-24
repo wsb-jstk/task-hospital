@@ -4,16 +4,16 @@ import java.time.LocalDate;
 
 public class PatientRegistrationInfo {
 
-    private String symptoms;
-    private LocalDate localDate;
+    private final String symptoms;
+    private final LocalDate localDate;
 
-    private String firstName;
-    private String lastName;
-    private LocalDate birthDate;
-    private DocumentId document;
-    private int height;
-    private int weight;
-    private Nationality nationality;
+    private final String firstName;
+    private final String lastName;
+    private final LocalDate birthDate;
+    private final DocumentId document;
+    private final int height;
+    private final int weight;
+    private final Nationality nationality;
 
     public PatientRegistrationInfo(String symptoms, String firstName, String lastName, LocalDate birthDate, DocumentId document, int height, int weight, Nationality nationality) {
         this.symptoms = symptoms;

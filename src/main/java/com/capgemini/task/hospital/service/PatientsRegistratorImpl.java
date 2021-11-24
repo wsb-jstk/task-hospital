@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class PatientsRegistratorImpl implements PatientsRegistrator {
 
-    private Map<Department, HospitalWard> wards;
+    private final Map<Department, HospitalWard> wards;
 
     public PatientsRegistratorImpl(Map<Department, HospitalWard> wards) {
         this.wards = wards;

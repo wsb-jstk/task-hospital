@@ -10,9 +10,12 @@ import java.util.Set;
  * Provides methods to work with {@link Patient patients} in the application.
  * Provides a single-point-of-truth for information about {@link Patient patients}
  */
-public class PatientRepository {
+public final class PatientRepository {
 
     private static final Set<Patient> PATIENTS = new HashSet<>();
+
+    private PatientRepository() {
+    }
 
     public static boolean isKnownPatient(DocumentId document) {
         return find(document) != null;
