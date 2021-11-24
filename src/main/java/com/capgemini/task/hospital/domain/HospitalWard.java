@@ -35,15 +35,12 @@ public class HospitalWard {
         hospitalRecord.setAdmissionDate(LocalDateTime.now());
         hospitalRecord.setSymptoms(info.getSymptoms());
 
-        if (Patients.isKnownPatient(info.getDocument())) {
-            Patient patient = Patients.find(info.getDocument());
-            patient.getHospitalRecords().add(hospitalRecord);
-            patients.add(patient);
-        } else {
-            Patient patient = Patients.createPatient(info.getFirstName(), info.getLastName(), info.getBirthDate(), info.getDocument(), info.getHeight(), info.getWeight(), info.getNationality());
-            patient.getHospitalRecords().add(hospitalRecord);
-            patients.add(patient);
+        Patient patient = Patients.find(info.getDocument());
+        if (patient == null) {
+            patient = Patients.createPatient(info.getFirstName(), info.getLastName(), info.getBirthDate(), info.getDocument(), info.getHeight(), info.getWeight(), info.getNationality());
         }
+        patient.getHospitalRecords().add(hospitalRecord);
+        patients.add(patient);
     }
 
     public void hireMedicalDoctor(MedicalDoctor medicalDoctor) {
