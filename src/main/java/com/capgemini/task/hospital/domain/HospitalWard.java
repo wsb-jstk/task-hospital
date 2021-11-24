@@ -13,14 +13,14 @@ import java.util.List;
  */
 public class HospitalWard {
 
-    private String name;
+    private Department type;
     private int capacity;
     private List<Patient> patients;
     private List<MedicalDoctor> medicalDoctors;
     private List<Nurse> nurses;
 
-    public HospitalWard(String name, int capacity, List<Patient> patients, List<MedicalDoctor> medicalDoctors, List<Nurse> nurses) {
-        this.name = name;
+    public HospitalWard(Department type, int capacity, List<Patient> patients, List<MedicalDoctor> medicalDoctors, List<Nurse> nurses) {
+        this.type = type;
         this.capacity = capacity;
         this.patients = patients;
         this.medicalDoctors = medicalDoctors;
@@ -57,12 +57,12 @@ public class HospitalWard {
 
     // getters and setters
 
-    public String getName() {
-        return name;
+    public Department getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setType(Department type) {
+        this.type = type;
     }
 
     public int getCapacity() {

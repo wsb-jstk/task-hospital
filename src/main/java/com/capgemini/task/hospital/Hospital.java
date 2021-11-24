@@ -11,9 +11,9 @@ import java.util.Map;
 
 public class Hospital {
 
-    private Map<String, HospitalWard> wards;
+    private Map<Department, HospitalWard> wards;
 
-    public Hospital(Map<String, HospitalWard> wards) {
+    public Hospital(Map<Department, HospitalWard> wards) {
         this.wards = wards;
     }
 
@@ -22,67 +22,17 @@ public class Hospital {
      *
      * @return true if patient was admitted; false otherwise
      */
-    public boolean admitPatient(String department, String symptoms, LocalDate localDate, String firstName, String lastName, //
+    public boolean admitPatient(Department department, String symptoms, LocalDate localDate, String firstName, String lastName, //
                                 LocalDate birthDate, DocumentId document, int height, int weight, Nationality nationality) {
-        if (department == "intensive care unit") {
-            if (wards.get("intensive care unit")
-                    .hasFreePlace()) {
-                wards.get("intensive care unit")
-                        .admitPatient(symptoms, localDate, firstName, lastName, birthDate, document, height, weight, nationality);
-                return true;
-            }
-            return false;
-        } else if (department == "clinic") {
-            if (wards.get("clinic")
-                    .hasFreePlace()) {
-                wards.get("clinic")
-                        .admitPatient(symptoms, localDate, firstName, lastName, birthDate, document, height, weight, nationality);
-                return true;
-            }
-            return false;
-        } else if (department == "infertility clinic") {
-            if (wards.get("infertility clinic")
-                    .hasFreePlace()) {
-                wards.get("infertility clinic")
-                        .admitPatient(symptoms, localDate, firstName, lastName, birthDate, document, height, weight, nationality);
-                return true;
-            }
-            return false;
-        } else if (department == "delivery room") {
-            if (wards.get("delivery room")
-                    .hasFreePlace()) {
-                wards.get("delivery room")
-                        .admitPatient(symptoms, localDate, firstName, lastName, birthDate, document, height, weight, nationality);
-                return true;
-            }
-            return false;
-        } else if (department == "psychiatric ward") {
-            if (wards.get("psychiatric ward")
-                    .hasFreePlace()) {
-                wards.get("psychiatric ward")
-                        .admitPatient(symptoms, localDate, firstName, lastName, birthDate, document, height, weight, nationality);
-                return true;
-            }
-            return false;
-        } else if (department == "isolation ward") {
-            if (wards.get("isolation ward")
-                    .hasFreePlace()) {
-                wards.get("isolation ward")
-                        .admitPatient(symptoms, localDate, firstName, lastName, birthDate, document, height, weight, nationality);
-                return true;
-            }
-            return false;
-        } else if (department == "cardiologist ward") {
-            if (wards.get("cardiologist ward")
-                    .hasFreePlace()) {
-                wards.get("cardiologist ward")
-                        .admitPatient(symptoms, localDate, firstName, lastName, birthDate, document, height, weight, nationality);
-                return true;
-            }
-            return false;
-        } else {
+        HospitalWard ward = wards.get(Department.INTENSIVE_CARE_UNIT);
+        if (ward == null) {
             return false;
         }
+        if (ward.hasFreePlace()) {
+            ward.admitPatient(symptoms, localDate, firstName, lastName, birthDate, document, height, weight, nationality);
+            return true;
+        }
+        return false;
     }
 
     public void requestCleaning(HospitalWard hospitalWard, LocalDate localDate) {
