@@ -1,9 +1,9 @@
 package com.capgemini.task.hospital.domain;
 
-import com.capgemini.task.hospital.PatientRepository;
 import com.capgemini.task.hospital.domain.staff.MedicalDoctor;
 import com.capgemini.task.hospital.domain.staff.Nurse;
 import com.capgemini.task.hospital.mapper.PatientMapper;
+import com.capgemini.task.hospital.repository.PatientRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;

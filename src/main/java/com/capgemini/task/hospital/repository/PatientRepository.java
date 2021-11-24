@@ -1,4 +1,4 @@
-package com.capgemini.task.hospital;
+package com.capgemini.task.hospital.repository;
 
 import com.capgemini.task.hospital.domain.DocumentId;
 import com.capgemini.task.hospital.domain.Patient;
