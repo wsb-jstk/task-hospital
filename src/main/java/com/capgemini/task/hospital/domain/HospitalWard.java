@@ -3,6 +3,7 @@ package com.capgemini.task.hospital.domain;
 import com.capgemini.task.hospital.Patients;
 import com.capgemini.task.hospital.domain.staff.MedicalDoctor;
 import com.capgemini.task.hospital.domain.staff.Nurse;
+import com.capgemini.task.hospital.mapper.PatientMapper;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -37,7 +38,8 @@ public class HospitalWard {
 
         Patient patient = Patients.find(info.getDocument());
         if (patient == null) {
-            patient = Patients.createPatient(info.getFirstName(), info.getLastName(), info.getBirthDate(), info.getDocument(), info.getHeight(), info.getWeight(), info.getNationality());
+            patient = PatientMapper.map(info);
+            Patients.save(patient);
         }
         patient.getHospitalRecords().add(hospitalRecord);
         patients.add(patient);
