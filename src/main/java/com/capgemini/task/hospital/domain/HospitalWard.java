@@ -1,6 +1,6 @@
 package com.capgemini.task.hospital.domain;
 
-import com.capgemini.task.hospital.Patients;
+import com.capgemini.task.hospital.PatientRepository;
 import com.capgemini.task.hospital.domain.staff.MedicalDoctor;
 import com.capgemini.task.hospital.domain.staff.Nurse;
 import com.capgemini.task.hospital.mapper.PatientMapper;
@@ -36,10 +36,10 @@ public class HospitalWard {
         hospitalRecord.setAdmissionDate(LocalDateTime.now());
         hospitalRecord.setSymptoms(info.getSymptoms());
 
-        Patient patient = Patients.find(info.getDocument());
+        Patient patient = PatientRepository.find(info.getDocument());
         if (patient == null) {
             patient = PatientMapper.map(info);
-            Patients.save(patient);
+            PatientRepository.save(patient);
         }
         patient.getHospitalRecords().add(hospitalRecord);
         patients.add(patient);

@@ -10,7 +10,7 @@ import java.util.Set;
  * Provides methods to work with {@link Patient patients} in the application.
  * Provides a single-point-of-truth for information about {@link Patient patients}
  */
-public class Patients {
+public class PatientRepository {
 
     private static final Set<Patient> PATIENTS = new HashSet<>();
 
