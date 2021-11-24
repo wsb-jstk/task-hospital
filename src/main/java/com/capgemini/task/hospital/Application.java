@@ -4,6 +4,7 @@ import com.capgemini.task.hospital.domain.Department;
 import com.capgemini.task.hospital.domain.DocumentId;
 import com.capgemini.task.hospital.domain.HospitalWard;
 import com.capgemini.task.hospital.domain.Nationality;
+import com.capgemini.task.hospital.service.PatientsRegistrator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +27,7 @@ public final class Application {
         HospitalWard isolationWard = new HospitalWard(Department.ISOLATION_WARD, 0, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 
         Map<Department, HospitalWard> wards = createMap(intensiveCareUnit, clinic, infertilityUnit, deliveryRoom, isolationWard);
-        Hospital hospitalService = new Hospital(wards);
+        PatientsRegistrator hospitalService = new PatientsRegistrator(wards);
 
         // pierwszy pacjent do oddziału, na którym jest miejsce
         boolean result1 = hospitalService.admitPatient(Department.INTENSIVE_CARE_UNIT, "ból gardła",
