@@ -4,18 +4,21 @@ import com.capgemini.task.hospital.domain.HospitalWard;
 
 import java.time.LocalDate;
 
-public class WardMaintenanceService {
+public interface WardMaintenanceService {
 
-    public void requestCleaning(HospitalWard hospitalWard, LocalDate localDate) {
-        // request for full clean of the ward
-    }
+    /**
+     * Request for full clean of the ward
+     */
+    void requestCleaning(HospitalWard hospitalWard, LocalDate localDate);
 
-    public void requestForDrugStorageRefill(HospitalWard hospitalWard) {
-        // request for refill drugs in storage of the ward
-    }
+    /**
+     * Request for refill drugs in storage of the ward
+     */
+    void requestForDrugStorageRefill(HospitalWard hospitalWard);
 
-    public void requestForNewStaffMember(HospitalWard hospitalWard, String role) {
-        // request for new staff
-    }
+    /**
+     * request for new staff
+     */
+    void requestForNewStaffMember(HospitalWard hospitalWard, String role);
 
 }

@@ -5,14 +5,16 @@ import com.capgemini.task.hospital.domain.staff.Staff;
 
 import java.time.YearMonth;
 
-public class SalaryCalculator {
+public interface SalaryCalculator {
 
-    public void calculateSalary(Staff staff, YearMonth yearMonth) {
-        // calculate salary for staff in given month of the year
-    }
+    /**
+     * Calculate salary for staff in given month of the year
+     */
+    void calculateSalary(Staff staff, YearMonth yearMonth);
 
-    public void calculateSalary(HospitalWard hospitalWard, YearMonth yearMonth) {
-        // calculate salary for given ward in given month of the year
-    }
+    /**
+     * Calculate salary for given ward in given month of the year
+     */
+    void calculateSalary(HospitalWard hospitalWard, YearMonth yearMonth);
 
 }

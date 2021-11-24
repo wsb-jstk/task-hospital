@@ -6,18 +6,21 @@ import com.capgemini.task.hospital.domain.staff.MedicalDoctor;
 
 import java.time.LocalDate;
 
-public class OrderMedicalTreatmentService {
+public interface OrderMedicalTreatmentService {
 
-    public void orderInjection(MedicalDoctor medicalDoctor, Patient patient, LocalDate localDate) {
-        // order an injection for the patient
-    }
+    /**
+     * Order an injection for the patient
+     */
+    void orderInjection(MedicalDoctor medicalDoctor, Patient patient, LocalDate localDate);
 
-    public void orderSurgery(MedicalDoctor medicalDoctor, Patient patient, LocalDate localDate, String remarks) {
-        // order to plan a surgery for a patient
-    }
+    /**
+     * Order to plan a surgery for a patient
+     */
+    void orderSurgery(MedicalDoctor medicalDoctor, Patient patient, LocalDate localDate, String remarks);
 
-    public void orderDiagnostic(MedicalDoctor medicalDoctor, Patient patient, LocalDate localDate, Diagnostic diagnostic, String remarks) {
-        // order some diagnostic which should be done on patient
-    }
+    /**
+     * Order some diagnostic which should be done on patient
+     */
+    void orderDiagnostic(MedicalDoctor medicalDoctor, Patient patient, LocalDate localDate, Diagnostic diagnostic, String remarks);
 
 }
