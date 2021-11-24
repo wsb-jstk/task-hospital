@@ -1,23 +1,9 @@
 package com.capgemini.task.hospital.domain.staff;
 
-import com.capgemini.task.hospital.domain.*;
+import com.capgemini.task.hospital.domain.Medicament;
+import com.capgemini.task.hospital.domain.Patient;
 
-import java.time.LocalDate;
-import java.util.Set;
-
-public class Nurse implements Staff, Injector {
-
-    private String firstName;
-    private String lastName;
-    private Sex sex;
-    private LocalDate birthDate;
-    private DocumentId documentId;
-    private Set<Qualification> qualifications;
-
-    @Override
-    public Set<Qualification> getQualifications() {
-        return qualifications;
-    }
+public class Nurse extends Staff implements Injector {
 
     @Override
     public void doInjection(Patient patient, Medicament medicament) {
